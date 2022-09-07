@@ -1,0 +1,14 @@
+on: [push]
+
+jobs:
+  hello_world_job:
+    runs-on: self-hosted
+    name: Greetings job
+    steps:
+      - uses: actions/checkout@v3
+      - id: foo
+        uses: AvaStancu/composite-actions@v1
+        with:
+          who-to-greet: 'Moona The Oktocat'
+      - run: echo random-number ${{ steps.foo.outputs.random-number }}
+        shell: bash
