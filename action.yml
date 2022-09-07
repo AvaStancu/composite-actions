@@ -11,7 +11,10 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - run: echo Hello ${{ inputs.who-to-greet }}.
+    - run:  |
+        echo "::group::Saying hello..."
+        echo Hello ${{ inputs.who-to-greet }}.
+        echo "::endgroup::"
       shell: bash
     - id: random-number-generator
       run: echo "::set-output name=random-number::$(echo $RANDOM)"
